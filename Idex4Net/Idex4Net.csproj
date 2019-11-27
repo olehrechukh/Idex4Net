@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Idex4Net.Domain\Idex4Net.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="HoshoEthUtil" Version="0.1.25" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="3.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+        <PackageReference Include="Nethereum.Signer" Version="3.4.0" />
+    </ItemGroup>
+
+</Project>
