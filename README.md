@@ -1,1 +1,1 @@
-# Idex.Net is a .Net wrapper for the Idex API. It includes all features the API provides, REST API, using clear and readable objects including but not limited to Reading market info, Placing and managing orders and Reading balances and funds
+Idex.Net is a .Net wrapper for the Idex API. It includes all features the API provides, REST API, using clear and readable objects including but not limited to Reading market info, Placing and managing orders and Reading balances and funds
