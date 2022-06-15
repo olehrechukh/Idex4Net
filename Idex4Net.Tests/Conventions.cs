@@ -1,4 +1,5 @@
-﻿using AutoFixture;
+﻿using System.Net.Http;
+using AutoFixture;
 using AutoFixture.Xunit2;
 
 namespace Idex4Net.Tests
@@ -19,7 +20,7 @@ namespace Idex4Net.Tests
 
             var apiCredentials = new ApiCredentials(ApiKey, ApiSecret, WalletAddress);
 
-            fixture.Inject(new IdexClient(apiCredentials));
+            fixture.Inject(new IdexClient(new HttpClient(), apiCredentials));
 
             return fixture;
         }

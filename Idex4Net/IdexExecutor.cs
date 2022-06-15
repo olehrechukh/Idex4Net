@@ -16,10 +16,13 @@ namespace Idex4Net
     public class IdexExecutor
     {
         private const string RestHost = "https://api.idex.market";
+        
+        private readonly HttpClient _httpClient;
         private readonly ApiCredentials _apiCredentials;
 
-        public IdexExecutor(ApiCredentials apiCredentials)
+        public IdexExecutor(HttpClient httpClient, ApiCredentials apiCredentials)
         {
+            _httpClient = httpClient;
             _apiCredentials = apiCredentials;
         }
 
@@ -53,15 +56,13 @@ namespace Idex4Net
                 parameters = new Dictionary<string, object>();
             }
 
-            using var client = new HttpClient();
-
             if (isSigned)
             {
                 AddVrsParameters(parameters);
-                client.DefaultRequestHeaders.Add("API-KEY", _apiCredentials.ApiKey);
+                _httpClient.DefaultRequestHeaders.Add("API-KEY", _apiCredentials.ApiKey);
             }
 
-            var response = await client.PostAsJsonAsync($"{RestHost}{url}", parameters, cancellationToken);
+            var response = await _httpClient.PostAsJsonAsync($"{RestHost}{url}", parameters, cancellationToken);
             var content = await response.Content.ReadAsStringAsync();
             return content;
         }

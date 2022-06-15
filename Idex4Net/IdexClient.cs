@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
-using Idex4Net.Domain;
 using Idex4Net.Domain.CoreModels;
 using Idex4Net.Domain.ExchangeModels;
 using Idex4Net.Extensions;
@@ -15,10 +15,10 @@ namespace Idex4Net
         private readonly IdexExecutor _idexExecutor;
         private readonly IdexClientCache _cache;
 
-        public IdexClient(ApiCredentials apiCredentials)
+        public IdexClient(HttpClient httpClient, ApiCredentials apiCredentials)
         {
             _apiCredentials = apiCredentials;
-            _idexExecutor = new IdexExecutor(apiCredentials);
+            _idexExecutor = new IdexExecutor(httpClient, apiCredentials);
             _cache = new IdexClientCache();
         }
 
